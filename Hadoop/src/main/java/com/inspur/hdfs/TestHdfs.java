@@ -79,6 +79,7 @@ public class TestHdfs {
 
     public static void main(String[] args) {
         System.out.println(getDir());
+        System.out.println("new branch ");
     }
 
 
