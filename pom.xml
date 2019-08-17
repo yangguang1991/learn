@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.inspur</groupId>
+    <artifactId>learn</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>TestCon</module>
+        <module>kafka</module>
+        <module>Hadoop</module>
+        <module>zookeeper</module>
+        <module>redis</module>
+        <module>tips</module>
+        <module>hbase</module>
+        <module>spark</module>
+        <module>hive</module>
+        <module>myDatastructure</module>
+    </modules>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <lombok.version>1.16.16</lombok.version>
+        <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
+        <scala.version>2.11.8</scala.version>
+        <scala.major.version>2.11</scala.major.version>
+        <hdp.version>2.6.2.0-205</hdp.version>
+        <hadoop.version>2.9.0</hadoop.version>
+        <hbase.version>1.1.2</hbase.version>
+        <zookeeper.version>3.4.6</zookeeper.version>
+        <!--<spark.version>2.2.1</spark.version>-->
+        <spark2.version>2.1.1</spark2.version>
+        <hive.version>1.2.2</hive.version>
+        <phoenix.version>4.7.0</phoenix.version>
+        <hadoop-hdp.version>${hadoop.version}.${hdp.version}</hadoop-hdp.version>
+        <hbase-hdp.version>${hbase.version}.${hdp.version}</hbase-hdp.version>
+        <zookeeper-hdp.version>${zookeeper.version}.${hdp.version}</zookeeper-hdp.version>
+        <spark-hdp.version>${spark2.version}.${hdp.version}</spark-hdp.version>
+        <hive-hdp.version>${hive.version}.${hdp.version}</hive-hdp.version>
+        <phoenix-hdp.version>${phoenix.version}.${hdp.version}</phoenix-hdp.version>
+        <hadoop.current.version>${hadoop-hdp.version}</hadoop.current.version>
+        <hbase.current.version>${hbase-hdp.version}</hbase.current.version>
+        <zookeeper.current.version>${zookeeper-hdp.version}</zookeeper.current.version>
+        <spark.current.version>${spark-hdp.version}</spark.current.version>
+        <hive.current.version>${hive-hdp.version}</hive.current.version>
+        <!-- phoenix -->
+        <phoenix.current.version>${phoenix-hdp.version}</phoenix.current.version>
+
+        <lombok.version>1.16.16</lombok.version>
+        <spring.version>3.2.18.RELEASE</spring.version>
+    </properties>
+
+
+    <repositories>
+
+        <repository>
+            <id>scyllor-r</id>
+            <name>aliyun maven repo remote</name>
+            <url>http://vps.scylla.me:8081/nexus/content/repositories/HDP/</url>
+        </repository>
+        <repository>
+            <id>scyllor-j-h</id>
+            <name>aliyun maven repo remote</name>
+            <url>http://vps.scylla.me:8081/nexus/content/repositories/jetty-hadoop/</url>
+        </repository>
+        <repository>
+            <id>scyllor-r-scala-tools.org</id>
+            <name>aliyun maven repo remote</name>
+            <url>http://vps.scylla.me:8081/nexus/content/repositories/scala-tools.org/</url>
+        </repository>
+        <repository>
+            <id>aliyun-r</id>
+            <name>aliyun maven repo remote</name>
+            <url>http://maven.aliyun.com/nexus/content/repositories/central/</url>
+        </repository>
+        <repository>
+            <id>hortonworks</id>
+            <name>hortonworks</name>
+            <url>http://repo.hortonworks.com/content/repositories/releases/</url>
+        </repository>
+        <repository>
+            <id>repo.hortonworks.com-jetty</id>
+            <name>Hortonworks Jetty Maven Repository</name>
+            <url>http://repo.hortonworks.com/content/repositories/jetty-hadoop/</url>
+        </repository>
+        <repository>
+            <id>central2</id>
+            <url>http://central.maven.org/maven2/</url>
+        </repository>
+        <repository>
+            <id>scala-tools.org</id>
+            <name>Scala-tools Maven2 Repository</name>
+            <url>http://scala-tools.org/repo-releases</url>
+        </repository>
+    </repositories>
+
+</project>
