@@ -36,7 +36,7 @@ public class TestWordCount {
     }
 
     //map运行之后会有一个shuffle过程，
-    // 这个过程会有排序，以及按照key进行分组，还有落盘的操作
+    //这个过程会有排序，以及按照key进行分组，还有落盘的操作
     //然后reduce在读取的时候就可以按组进行reduce
 
     public static class MyReducer extends org.apache.hadoop.mapreduce.Reducer<Text, LongWritable, Text, LongWritable> {
@@ -50,19 +50,21 @@ public class TestWordCount {
             }
             System.out.println("k2=" + k2 + " count=" + count);
             LongWritable v3 = new LongWritable(count);
+            v3=null;
             context.write(k2, v3);
         }
     }
 
     //客户端代码，写完交给ResourceManager框架去执行
+    //执行命令
+    // hadoop  jar   Hadoop-1.0-SNAPSHOT.jar com.inspur.wordcount.TestWordCount  "/oozie_work/shellTest/test.sh"  "/oozie_work/shellTest/"
+
     public static void main(String[] args) throws Exception {
         Configuration conf = new Configuration();
-
 
         Job job = Job.getInstance(conf, "wordcount by yang");
         //打成jar执行
         job.setJarByClass(TestWordCount.class);
-
         //数据在哪里？
         FileInputFormat.setInputPaths(job, args[0]);
         //使用哪个mapper处理输入的数据？
@@ -70,7 +72,6 @@ public class TestWordCount {
         //map输出的数据类型是什么？
         job.setMapOutputKeyClass(Text.class);
         job.setMapOutputValueClass(LongWritable.class);
-
         //设置reduce任务的个数，默认是只有一个
         job.setNumReduceTasks(2);
         //使用哪个reducer处理输入的数据？
