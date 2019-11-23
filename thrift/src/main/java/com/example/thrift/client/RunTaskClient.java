@@ -11,7 +11,7 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
 /**
- * @Description: runtask.thrift
+ * @Description: runtask.thrift  just test
  * @user: yang
  * @Time: 2019/7/8  21:55
  */
