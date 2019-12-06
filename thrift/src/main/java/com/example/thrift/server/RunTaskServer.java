@@ -22,7 +22,7 @@ import scala.collection.Map;
 public class RunTaskServer {
     public static void main(String[] args) {
 
-        Logger logger = LoggerFactory.getLogger(ServerDemo.class);
+        Logger logger = LoggerFactory.getLogger(RunTaskServer.class);
         int port = 12436;
         // *) 传输层(Transport), 设置监听端口为9000
         TServerSocket serverTransport = null;
@@ -54,7 +54,7 @@ public class RunTaskServer {
         String key = "";
         while (((Iterator) it).hasNext()) {
             key = it.next();
-            System.out.println(key + "  ==== " + map.get(key));
+            System.out.println(key + " ==== " + map.get(key));
         }
 
         if (null == sparkSession) {
@@ -68,7 +68,8 @@ public class RunTaskServer {
         TServer server = new TThreadPoolServer(
                 new TThreadPoolServer.Args(serverTransport)
                         .protocolFactory(protocolFactory)
-                        .processor(processor));
+                        .processor(processor)
+        );
         if (null == server) {
             System.out.println("server is null");
         }
