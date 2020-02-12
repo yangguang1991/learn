@@ -56,8 +56,8 @@ public class TestExcel {
         firstSheet.addMergedRegion(region6);
 
         CellStyle style = wb.createCellStyle();
-        style.setAlignment(HSSFCellStyle.ALIGN_CENTER);
-        style.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setVerticalAlignment( VerticalAlignment.CENTER);
 
         List<ArrayList<String>> firstDyadic = dyadics[0];
         int size = firstDyadic.size();
@@ -72,15 +72,15 @@ public class TestExcel {
                 if (k == 1 && i == 0) {
                     System.out.println(tempString);
                     CellStyle style1 = wb.createCellStyle();
-                    style1.setAlignment(HSSFCellStyle.ALIGN_LEFT);
-                    style1.setVerticalAlignment(HSSFCellStyle.VERTICAL_CENTER);
+                    style1.setAlignment(HorizontalAlignment.CENTER);
+                    style1.setVerticalAlignment(VerticalAlignment.CENTER);
                     cell.setCellStyle(style1);
                 }
                 System.out.println("k=" + k);
 
                 if (k % 2 == 1 && k > 2) {
                     CellStyle style1 = wb.createCellStyle();
-                    style1.setBorderBottom(CellStyle.BORDER_HAIR);
+                    style1.setBorderBottom(BorderStyle.HAIR );
                     cell.setCellStyle(style1);
                     System.out.println("tempString=" + tempString);
                 }
@@ -232,7 +232,7 @@ public class TestExcel {
         dyadics.add(header5);
         dyadics.add(header6);
 
-        exportFrom("F:\\excel\\test.xls", "1", "data_part", dyadics);
+        exportFrom("F:\\test.xls", "1", "data_part", dyadics);
 
 
     }
