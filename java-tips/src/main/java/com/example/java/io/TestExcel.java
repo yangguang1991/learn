@@ -26,7 +26,6 @@ public class TestExcel {
 
         int index = absolutePath.lastIndexOf(".");
         String suffix = absolutePath.substring(index + 1);
-
         boolean flag = false;
         Workbook wb = null;
         if ("xls".equals(suffix)) {
@@ -36,8 +35,57 @@ public class TestExcel {
         } else {
             return false;
         }
-
         Sheet firstSheet = wb.createSheet();
+
+//        CellStyle style = wb.createCellStyle();
+//        style.setAlignment(HorizontalAlignment.CENTER);
+//        style.setVerticalAlignment(VerticalAlignment.CENTER);
+
+        List<ArrayList<String>> firstDyadic = dyadics[0];//一个数组，第一个表示第一个sheet
+        int size = firstDyadic.size();
+        System.out.println(size);
+        for (int k = 0; k < size; k++) {
+            short height=1;
+            Row row = firstSheet.createRow(k);
+            row.setHeight(height);
+            int size_2 = firstDyadic.get(k).size();
+            System.out.println("size_2=" + size_2);
+            for (int i = 0; i < size_2; i++) {
+                String tempString = firstDyadic.get(k).get(i);
+                Cell cell = row.createCell(i);
+                System.out.println("tempString11=" + tempString);
+                //固定表头的设置
+                if (k <= 2) {
+                    CellStyle style1 = wb.createCellStyle();
+                    style1.setAlignment(HorizontalAlignment.CENTER);
+                    style1.setVerticalAlignment(VerticalAlignment.CENTER);
+                    cell.setCellStyle(style1);
+                }
+                //奇数行
+                if (k % 2 == 1 && k > 2) {
+                    CellStyle style1 = wb.createCellStyle();
+                    style1.setBorderBottom(BorderStyle.HAIR);
+                    style1.setBorderTop(BorderStyle.THIN);
+                    style1.setBorderRight(BorderStyle.THIN);
+                    style1.setAlignment(HorizontalAlignment.CENTER);
+                    style1.setVerticalAlignment(VerticalAlignment.CENTER);
+                    cell.setCellStyle(style1);
+                    System.out.println("tempString777=" + tempString);
+                }
+
+                if (k % 2 == 0 && k > 2) {
+                    CellStyle style1 = wb.createCellStyle();
+                    style1.setBorderBottom(BorderStyle.THIN);
+                    style1.setBorderRight(BorderStyle.THIN);
+                    style1.setAlignment(HorizontalAlignment.CENTER);
+                    style1.setVerticalAlignment(VerticalAlignment.CENTER);
+
+                    cell.setCellStyle(style1);
+                    System.out.println("tempString333=" + tempString + ",i=" + i);
+                }
+                cell.setCellValue(tempString);
+            }
+        }
 
         // 下面是做了一些单元格的合并
         CellRangeAddress region = new CellRangeAddress(0, 0, 0, 13);
@@ -48,45 +96,14 @@ public class TestExcel {
         firstSheet.addMergedRegion(region2);
         CellRangeAddress region3 = new CellRangeAddress(2, 2, 4, 12);
         firstSheet.addMergedRegion(region3);
+        //下面这些需要逻辑生成，然后在合并了
         CellRangeAddress region4 = new CellRangeAddress(3, 6, 0, 0);
         firstSheet.addMergedRegion(region4);
-        CellRangeAddress region5 = new CellRangeAddress(5, 6, 1, 1);
+        CellRangeAddress region5 = new CellRangeAddress(3, 4, 1, 1);
         firstSheet.addMergedRegion(region5);
-        CellRangeAddress region6 = new CellRangeAddress(3, 4, 1, 1);
+        CellRangeAddress region6 = new CellRangeAddress(5, 6, 1, 1);
         firstSheet.addMergedRegion(region6);
 
-        CellStyle style = wb.createCellStyle();
-        style.setAlignment(HorizontalAlignment.CENTER);
-        style.setVerticalAlignment( VerticalAlignment.CENTER);
-
-        List<ArrayList<String>> firstDyadic = dyadics[0];
-        int size = firstDyadic.size();
-        for (int k = 0; k < size; k++) {
-            Row row = firstSheet.createRow(k);
-            int size_2 = firstDyadic.get(k).size();
-            for (int i = 0; i < size_2; i++) {
-                String tempString = firstDyadic.get(k).get(i);
-                Cell cell = row.createCell(i);
-
-                cell.setCellStyle(style);
-                if (k == 1 && i == 0) {
-                    System.out.println(tempString);
-                    CellStyle style1 = wb.createCellStyle();
-                    style1.setAlignment(HorizontalAlignment.CENTER);
-                    style1.setVerticalAlignment(VerticalAlignment.CENTER);
-                    cell.setCellStyle(style1);
-                }
-                System.out.println("k=" + k);
-
-                if (k % 2 == 1 && k > 2) {
-                    CellStyle style1 = wb.createCellStyle();
-                    style1.setBorderBottom(BorderStyle.HAIR );
-                    cell.setCellStyle(style1);
-                    System.out.println("tempString=" + tempString);
-                }
-                cell.setCellValue(tempString);
-            }
-        }
 
         int len = dyadics.length;
         for (int i = 1; i < len; i++) {
@@ -98,7 +115,6 @@ public class TestExcel {
             int dyadicSize = dyadic.size();
             for (int k = 0; k < dyadicSize; k++) {
                 Row row = sheet.createRow(k);
-
                 int size_2 = dyadic.get(k).size();
                 for (int j = 0; j < size_2; j++) {
                     String tempString = dyadic.get(k).get(j);
@@ -212,17 +228,18 @@ public class TestExcel {
         header6.add("1");
         header6.add("夷陵广场3.DF");
         header6.add("到");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
-        header6.add("5:50:00");
+        header6.add("5:53:00");
+        header6.add("5:54:00");
+        header6.add("5:55:00");
+        header6.add("5:56:00");
+        header6.add("5:53:00");
+        header6.add("5:53:00");
+        header6.add("5:53:00");
+        header6.add("5:53:00");
+        header6.add("5:53:00");
+        header6.add("5:53:00");
+        header6.add("5:53:00");
+
 
         dyadics.add(header);
         dyadics.add(header1);
@@ -232,8 +249,7 @@ public class TestExcel {
         dyadics.add(header5);
         dyadics.add(header6);
 
-        exportFrom("F:\\test.xls", "1", "data_part", dyadics);
-
+        exportFrom("F:\\test.xlsx", "1", "data_part", dyadics);
 
     }
 }
