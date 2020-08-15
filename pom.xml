@@ -15,10 +15,14 @@
         <module>zookeeper</module>
         <module>redis</module>
         <module>tips</module>
-        <module>hbase</module>
+        <module>java-tips</module>
         <module>spark</module>
         <module>hive</module>
+        <module>thrift</module>
         <module>myDatastructure</module>
+        <module>machine-learning</module>
+        <module>my-protobuf</module>
+        <module>my-netty</module>
     </modules>
 
     <properties>
