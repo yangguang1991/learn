@@ -6,11 +6,9 @@ import java.util.Scanner;
  * @Date: create in 2020/8/21 15:17
  */
 public class Main {
-
     public static void main(String[] args) {
         method();
     }
-
     public static void method() {
         Scanner s = new Scanner(System.in);
         String a = s.nextLine();
@@ -58,7 +56,6 @@ public class Main {
                 System.out.println("NO");
                 return;
             }
-
             //4的话也是可以的了
             if (i + 3 <= a.length() - 1 && b.length() != 4 && a.charAt(i) == a.charAt(i + 1)
                     && a.charAt(i) == a.charAt(i + 2)
