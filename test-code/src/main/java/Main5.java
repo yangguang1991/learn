@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-//将其中的*号替换
+//将其中数字用的*号替换
 public class Main5 {
 
     public static void main(String[] args) {
