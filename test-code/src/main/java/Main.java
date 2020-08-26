@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * @Author: kevin yang
  * @Description:  德州扑克
- * @Date: create in 2020/8/21 15:17
+ * @Date: create in
  */
 public class Main {
     public static void main(String[] args) {
@@ -11,9 +11,9 @@ public class Main {
     }
     public static void method() {
         Scanner s = new Scanner(System.in);
-        String a = s.nextLine();
+        String a = s.nextLine();// 我手中的牌
         Scanner ss = new Scanner(System.in);
-        String b = ss.nextLine();
+        String b = ss.nextLine();// 对方出的牌
 
         int len = b.length();
         int i;
