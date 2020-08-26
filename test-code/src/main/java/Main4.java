@@ -5,7 +5,7 @@ import java.util.Stack;
 
 
 public class Main4 {
-    //  547
+    //  547   朋友圈
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
