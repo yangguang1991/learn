@@ -23,6 +23,7 @@
         <module>machine-learning</module>
         <module>my-protobuf</module>
         <module>my-netty</module>
+        <module>test-code</module>
     </modules>
 
     <properties>

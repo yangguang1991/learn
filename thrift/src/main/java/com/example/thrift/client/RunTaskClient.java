@@ -11,7 +11,7 @@ import org.apache.thrift.transport.TTransport;
 import org.apache.thrift.transport.TTransportException;
 
 /**
- * @Description: runtask.thrift  just test
+ * @Description: runtask.thrift  just
  * @user: yang
  * @Time: 2019/7/8  21:55
  */
@@ -36,7 +36,6 @@ public class RunTaskClient {
             Task task = new Task();
             task.setTaskType(Type.KPI);
             task.setContent(args[0]);
-
             System.out.println(client.runKpitask(task));
             // *) 关闭句柄
             transport.close();

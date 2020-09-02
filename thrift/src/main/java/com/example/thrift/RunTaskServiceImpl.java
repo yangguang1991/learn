@@ -71,7 +71,6 @@ public class RunTaskServiceImpl implements RunTaskService.Iface, Serializable {
         list.add(str);
         JavaSparkContext sc = JavaSparkContext.fromSparkContext(sparkSession.sparkContext());
         JavaRDD<String> text = sc.parallelize(list);
-
         JavaPairRDD<String, Integer> re = text.mapPartitionsToPair(new PairFlatMapFunction<Iterator<String>, String, Integer>() {
             @Override
             public Iterator<Tuple2<String, Integer>> call(Iterator<String> iterator) throws Exception {

@@ -4,17 +4,18 @@ import java.util.Stack;
 
 /**
  * @Author: kevin yang
- * @Description:  自己写的迷宫
+ * @Description: 自己写的寻找迷宫路径
  * @Date: create in
  */
 public class Main17 {
     public static void main(String[] args) {
         method();
     }
-    public static void method() {
-       int[][] arr = {{0, 0, 0, 0}, {0, 0, 0, 1}, {0, 1, 1, 1}, {0, 0, 0, 0}};
 
-       // int[][] arr = {{0, 0, 0, 1}, {1, 0, 1, 1}, {1, 0, 1, 1}, {1, 0, 0, 0}};
+    public static void method() {
+        int[][] arr = {{0, 0, 0, 0}, {0, 0, 0, 1}, {0, 1, 1, 1}, {0, 0, 0, 0}};
+
+        // int[][] arr = {{0, 0, 0, 1}, {1, 0, 1, 1}, {1, 0, 1, 1}, {1, 0, 0, 0}};
         Stack<String> stack = new Stack<>();//当前的路径
         List<String> list = new ArrayList<>();//访问过的点
         stack.push("00");
@@ -37,6 +38,7 @@ public class Main17 {
             stack.pop();//那就出栈
         }
         System.out.println(stack);
+        System.out.println(list);
     }
 
 

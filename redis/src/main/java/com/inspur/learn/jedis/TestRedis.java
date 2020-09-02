@@ -1,5 +1,6 @@
 package com.inspur.learn.jedis;
 
+import com.inspur.learn.jedis.dao.RedisDao;
 import com.inspur.learn.util.RedisPoolUtil;
 import com.inspur.learn.util.VoSerial;
 import com.inspur.learn.vo.User;
@@ -14,11 +15,11 @@ import java.util.*;
  */
 public class TestRedis {
     // 用的是Junit测试的
-    private Jedis jedis;
+    private static Jedis jedis;
 
-    public void setup() {
-        // jedis = RedisDao.getJedis();
-        jedis = RedisPoolUtil.getJedis();
+    static {
+         jedis = RedisDao.getJedis();
+        //jedis = RedisPoolUtil.getJedis();
     }
 
     /**
@@ -149,7 +150,6 @@ public class TestRedis {
             List<String> list2 = jedis.lrange("message", 0, -1);
             System.out.println("list2=" + list2);
         }
-
     }
 
     // hash可以存储对象的，一个个的field
@@ -167,8 +167,47 @@ public class TestRedis {
         System.out.println("keys=" + keys);
         List<String> vals = jedis.hvals("player");
         System.out.println("keys=" + vals);
-
     }
 
+    // hash可以存储对象的，一个个的field
+    public static void getMap(String mapName) {
+
+
+
+        Iterator<String> iter = jedis.keys(mapName).iterator();
+        while (iter.hasNext()) {
+            String key = iter.next();
+            System.out.println(key + ":" + jedis.hmget(mapName, key));
+        }
+    }
+
+    public  static  void  method1(){
+        while (true) {
+            try {
+                //阻塞队列，1小时没有数据释放连接
+                List<String> result = jedis.blpop(60 * 60 * 1,"321321321");
+                if (result != null && result.size() > 1) {
+                    String key = result.get(0);
+                    //todo something
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                jedis.close();
+            }
+        }
+    }
+
+
+
+    public static void main(String[] args)
+
+    {
+        TestRedis.getMap("CPMP:TELEMETRY_NOTIFY_REQ:33373032313230343333350000000000:18*");
+
+
+
+
+    }
 
 }

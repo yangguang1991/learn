@@ -30,16 +30,14 @@ public class DBScan {
         s3.setLa(0);
 
         Station s4 = new Station();
-        s4.setLongl(90);
+        s4.setLongl(7);
         s4.setLa(0);
-
 
         List<Station> list = new ArrayList<>();
         list.add(s1);
         list.add(s2);
         list.add(s3);
         list.add(s4);
-
 
         int cluster = 0;
         Station temp = null;

@@ -6,19 +6,21 @@ import java.util.Scanner;
 public class Main7 {
 
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        while (in.hasNext()) {
-            int n = in.nextInt();
-            int m = in.nextInt();
-            int[][] maze = new int[n][m];
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < m; j++) {
-                    maze[i][j] = in.nextInt();
-                }
-            }
-            findBestWay(maze);
-        }
-        in.close();
+//        Scanner in = new Scanner(System.in);
+//        while (in.hasNext()) {
+//            int n = in.nextInt();
+//            int m = in.nextInt();
+//            int[][] maze = new int[n][m];
+//            for (int i = 0; i < n; i++) {
+//                for (int j = 0; j < m; j++) {
+//                    maze[i][j] = in.nextInt();
+//                }
+//            }
+//            findBestWay(maze);
+//        }
+//        in.close();
+        int[][] arr = {{0, 0, 0, 0}, {0, 0, 0, 1}, {0, 1, 1, 1}, {0, 0, 0, 0}};
+        findBestWay(arr);
     }
 
     private static void findBestWay(int[][] maze) {
