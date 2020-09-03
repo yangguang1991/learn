@@ -2,39 +2,21 @@ package com.example.leetcode;
 
 /**
  * @Author: kevin yang
- * @Description:
+ * @Description: 4
  * @Date: create in 2020/9/1 20:22
  */
 public class Test10 {
 
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+    public static boolean isMatch(String s, String p) {
 
+        //先匹配字母  然后是.   然后是*
 
-        //奇数的话，中间的就是
-
-        int all=nums1.length+nums2.length;
-
-        for(int i=0;i<nums1.length;i++){
-            for(int j){
-
-            }
-
-        }
-
-
-
-
-        //偶数的话，那就是
-
-
-        return  0;
-
+        return false;
     }
-
     public static void main(String[] args) {
-        Test10 test10 = new Test10();
-        int[] num1 = {};
-        int[] num2 = {};
-        test10.findMedianSortedArrays(num1,num2);
+
+        String s = "";
+        String p = "";
+        System.out.println(isMatch(s, p));
     }
 }
