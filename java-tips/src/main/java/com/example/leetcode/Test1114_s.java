@@ -7,7 +7,7 @@ import java.util.concurrent.Semaphore;
  * @Description:
  * @Date: create in 2020/9/3 17:41
  */
-public class Test1114_S {
+public class Test1114_s {
 
 
     public class Foo {
@@ -41,8 +41,8 @@ public class Test1114_S {
 
     public static void main(String[] args) throws InterruptedException {
 
-        com.example.leetcode.Test1114_S test1114 = new com.example.leetcode.Test1114_S();
-        final com.example.leetcode.Test1114_S.Foo foo = test1114.new Foo();
+        Test1114_s test1114 = new Test1114_s();
+        final Test1114_s.Foo foo = test1114.new Foo();
         Runnable runnable1 = new Runnable() {
             @Override
             public void run() {
