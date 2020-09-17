@@ -9,19 +9,13 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>TestCon</module>
-        <module>kafka</module>
         <module>Hadoop</module>
-        <module>zookeeper</module>
         <module>redis</module>
-        <module>tips</module>
         <module>java-tips</module>
-        <module>spark</module>
         <module>hive</module>
         <module>thrift</module>
         <module>myDatastructure</module>
         <module>machine-learning</module>
-        <module>my-protobuf</module>
         <module>my-netty</module>
         <module>test-code</module>
     </modules>

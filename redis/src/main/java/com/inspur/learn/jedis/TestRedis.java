@@ -1,11 +1,13 @@
 package com.inspur.learn.jedis;
 
 import com.inspur.learn.jedis.dao.RedisDao;
-import com.inspur.learn.util.RedisPoolUtil;
 import com.inspur.learn.util.VoSerial;
 import com.inspur.learn.vo.User;
 import redis.clients.jedis.Jedis;
+import redis.clients.jedis.JedisCluster;
+import redis.clients.jedis.JedisPool;
 
+import javax.sound.midi.Soundbank;
 import java.util.*;
 
 /**
@@ -18,7 +20,7 @@ public class TestRedis {
     private static Jedis jedis;
 
     static {
-         jedis = RedisDao.getJedis();
+        //jedis = RedisDao.getJedis();
         //jedis = RedisPoolUtil.getJedis();
     }
 
@@ -172,8 +174,6 @@ public class TestRedis {
     // hash可以存储对象的，一个个的field
     public static void getMap(String mapName) {
 
-
-
         Iterator<String> iter = jedis.keys(mapName).iterator();
         while (iter.hasNext()) {
             String key = iter.next();
@@ -181,11 +181,11 @@ public class TestRedis {
         }
     }
 
-    public  static  void  method1(){
+    public static void method1() {
         while (true) {
             try {
                 //阻塞队列，1小时没有数据释放连接
-                List<String> result = jedis.blpop(60 * 60 * 1,"321321321");
+                List<String> result = jedis.blpop(60 * 60 * 1, "321321321");
                 if (result != null && result.size() > 1) {
                     String key = result.get(0);
                     //todo something
@@ -198,16 +198,41 @@ public class TestRedis {
         }
     }
 
+    //通过cluster来操作数据,删除
+    public static void method2() {
+        JedisCluster cluster = RedisDao.getJedisCluster();
+        //hkeys和keys是不一样的，另外JedisCluster是不提供keys方法的，
+        Set<String> set = cluster.hkeys("CPMP:ALL_CHARGER*");
+        System.out.println("set=" + set);
+        Iterator<String> iterator = set.iterator();
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            System.out.println("key=" + key);
+        }
 
 
-    public static void main(String[] args)
+        //hkeys和keys是不一样的，另外JedisCluster是不提供keys方法的，
+        //需要自己遍历redis节点实现
+        set = cluster.smembers("CPMP:ALL_CHARGER");
+        System.out.println("set=" + set);
 
-    {
-        TestRedis.getMap("CPMP:TELEMETRY_NOTIFY_REQ:33373032313230343333350000000000:18*");
-
-
-
-
+        TreeSet<String> keys = new TreeSet<>();
+        Map<String, JedisPool> clusterNodes = cluster.getClusterNodes();
+        for (String k : clusterNodes.keySet()) {
+            JedisPool jp = clusterNodes.get(k);
+            Jedis connection = jp.getResource();
+            try {
+                keys.addAll(connection.keys("CPMP:ALL_CHARGER*"));
+            } catch (Exception e) {
+                e.printStackTrace();
+            } finally {
+                connection.close();//用完一定要close这个链接！！！
+            }
+        }
+        System.out.println("keys=" + keys);
     }
 
+    public static void main(String[] args) {
+        method2();
+    }
 }
