@@ -18,7 +18,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <guava.version>14.0.1</guava.version>
-        <protobuf.version>3.12.2</protobuf.version>
+        <protobuf.version>3.16.1</protobuf.version>
     </properties>
 
     <dependencies>
